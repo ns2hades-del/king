@@ -1,60 +1,231 @@
 <!DOCTYPE html>
-<html lang="fr" class="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>À propos - VITCH</title>
+    <title>About VITCH - Our Story</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#667eea',
-                        secondary: '#764ba2',
-                    }
-                }
-            }
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        * {
+            font-family: 'Inter', sans-serif;
         }
-    </script>
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a0f3f 50%, #0d1b2a 100%);
+        }
+
+        .neon-text {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar-blur {
+            background: rgba(15, 15, 30, 0.7);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-glow {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-glow:hover {
+            transform: scale(1.08);
+            box-shadow: 0 20px 50px rgba(139, 92, 246, 0.5);
+        }
+
+        .neon-gradient {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+        }
+    </style>
 </head>
-<body class="bg-gray-900 text-white">
-    <!-- Navbar -->
-    <nav class="bg-gray-800 p-4">
-        <div class="container mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold text-primary">VITCH</a>
-            <ul class="flex space-x-6">
-                <li><a href="index.html" class="hover:text-primary transition">Accueil</a></li>
-                <li><a href="services.html" class="hover:text-primary transition">Services</a></li>
-                <li><a href="about.html" class="hover:text-primary transition">À propos</a></li>
-                <li><a href="contact.html" class="hover:text-primary transition">Contact</a></li>
-                <li><a href="dashboard.html" class="hover:text-primary transition">Dashboard</a></li>
-            </ul>
-        </div>
+<body class="text-white">
+
+<!-- NAVBAR -->
+<header class="navbar-blur sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto flex justify-between items-center p-6">
+    <div class="flex items-center space-x-2">
+      <div class="text-3xl font-bold neon-text">V</div>
+      <h1 class="text-2xl font-bold neon-text">ITCH</h1>
+    </div>
+    <nav class="hidden md:flex space-x-8 items-center">
+      <a href="index.html" class="hover:text-purple-400 transition duration-300 font-medium">Home</a>
+      <a href="services.html" class="hover:text-purple-400 transition duration-300 font-medium">Services</a>
+      <a href="about.html" class="hover:text-purple-400 transition duration-300 font-medium text-purple-400">About</a>
+      <a href="contact.html" class="btn-glow px-6 py-2 rounded-full font-semibold text-sm">Contact</a>
     </nav>
+  </div>
+</header>
 
-    <!-- About Section -->
-    <section class="py-20 bg-gray-800">
-        <div class="container mx-auto text-center">
-            <h1 class="text-4xl font-bold mb-8">À propos de VITCH</h1>
-            <div class="max-w-4xl mx-auto">
-                <p class="text-lg mb-6">
-                    VITCH a été fondée le 13 avril 2026 par une équipe passionnée de développeurs engagés à révolutionner les paiements numériques en Afrique.
-                </p>
-                <p class="text-lg mb-6">
-                    Dirigée par notre PDG visionnaire, Melkisédeck DJIMADJO, nous avons réuni une équipe de développeurs talentueux et d'experts fintech qui partagent un objectif commun : combler le fossé entre la banque traditionnelle et les besoins numériques modernes.
-                </p>
-                <p class="text-lg">
-                    Notre mission est de simplifier les paiements numériques en Afrique, en offrant des solutions sécurisées, rapides et accessibles à tous.
-                </p>
-            </div>
+<!-- HERO SECTION -->
+<section class="text-center py-20 px-6">
+  <h1 class="text-6xl md:text-7xl font-black neon-text mb-6">About VITCH</h1>
+  <p class="text-gray-400 text-xl max-w-2xl mx-auto">Discover the story behind Africa's most innovative fintech platform</p>
+</section>
+
+<!-- COMPANY STORY -->
+<section class="px-6 py-16 max-w-5xl mx-auto">
+  <div class="glass-card p-12 rounded-2xl mb-16">
+    <h2 class="text-4xl font-bold neon-text mb-6">Our Story</h2>
+    <p class="text-gray-300 text-lg mb-6 leading-relaxed">
+      VITCH was founded on <span class="text-purple-400 font-semibold">April 13, 2026</span>, by a visionary team of developers united by a single mission: to revolutionize digital payments in Africa. 
+    </p>
+    <p class="text-gray-300 text-lg mb-6 leading-relaxed">
+      Led by <span class="text-purple-400 font-semibold">Melkisédeck DJIMADJO</span>, our collective of talented developers pooled their expertise and passion to create a fintech solution that is not just innovative, but deeply rooted in understanding African market needs.
+    </p>
+    <p class="text-gray-300 text-lg leading-relaxed">
+      From day one, we understood that Africa needed a fintech platform that combines cutting-edge technology with simplicity, security, and affordability. VITCH is the answer to that call.
+    </p>
+  </div>
+</section>
+
+<!-- OUR TEAM -->
+<section class="px-6 py-16 max-w-5xl mx-auto">
+  <div class="mb-12">
+    <h2 class="text-4xl font-bold neon-text mb-6">Meet the Team</h2>
+    <p class="text-gray-400 mb-12">Founded by developers, led with vision</p>
+  </div>
+
+  <div class="glass-card p-12 rounded-2xl mb-8">
+    <div class="flex flex-col md:flex-row gap-8 items-center">
+      <div class="flex-shrink-0">
+        <div class="w-32 h-32 bg-gradient-to-br from-purple-600 to-pink-600 rounded-2xl flex items-center justify-center">
+          <div class="text-6xl">👨‍💼</div>
         </div>
-    </section>
+      </div>
+      <div class="flex-1">
+        <h3 class="text-2xl font-bold mb-2">Melkisédeck DJIMADJO</h3>
+        <p class="text-purple-400 font-semibold mb-4">Founder & CEO</p>
+        <p class="text-gray-300 leading-relaxed">
+          With extensive experience in fintech innovation and a deep passion for African financial inclusion, Melkisédeck leads VITCH with vision and determination. His leadership drives our commitment to excellence and innovation.
+        </p>
+      </div>
+    </div>
+  </div>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 py-8 text-center">
-        <p>&copy; 2026 VITCH. Tous droits réservés.</p>
-    </footer>
+  <div class="glass-card p-12 rounded-2xl">
+    <div class="flex flex-col md:flex-row gap-8 items-start">
+      <div class="flex-1">
+        <h3 class="text-2xl font-bold mb-2">Founding Developer Team</h3>
+        <p class="text-purple-400 font-semibold mb-4">Co-Founders</p>
+        <p class="text-gray-300 mb-6 leading-relaxed">
+          A talented collective of developers from across Africa who share a common vision: to build world-class fintech solutions for the continent.
+        </p>
+        <ul class="space-y-2 text-gray-300">
+          <li class="flex items-start">
+            <span class="text-purple-400 mr-3">•</span>
+            <span>Full-stack software engineers with 10+ years combined experience</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-purple-400 mr-3">•</span>
+            <span>Blockchain and security experts ensuring fortress-level protection</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-purple-400 mr-3">•</span>
+            <span>Product designers focused on user experience excellence</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-purple-400 mr-3">•</span>
+            <span>Business strategists with fintech market expertise</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION & VISION -->
+<section class="px-6 py-16 max-w-5xl mx-auto">
+  <div class="grid md:grid-cols-2 gap-8">
+    <div class="glass-card p-10 rounded-2xl">
+      <h3 class="text-3xl font-bold neon-text mb-6">Our Mission</h3>
+      <p class="text-gray-300 text-lg leading-relaxed">
+        To empower millions of Africans with innovative, accessible, and secure fintech solutions that simplify digital payments and foster financial inclusion across the continent.
+      </p>
+    </div>
+
+    <div class="glass-card p-10 rounded-2xl">
+      <h3 class="text-3xl font-bold neon-text mb-6">Our Vision</h3>
+      <p class="text-gray-300 text-lg leading-relaxed">
+        To become the trusted, leading fintech platform in Africa—where virtual cards, online payments, money transfers, and integrated services empower individuals and businesses to thrive.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES SECTION -->
+<section class="px-6 py-16 max-w-5xl mx-auto">
+  <h2 class="text-4xl font-bold neon-text mb-12 text-center">Our Core Values</h2>
+  
+  <div class="grid md:grid-cols-3 gap-8">
+    <div class="glass-card p-8 rounded-2xl text-center">
+      <p class="text-5xl mb-4">🔒</p>
+      <h4 class="text-xl font-bold mb-3">Security First</h4>
+      <p class="text-gray-300">Bank-grade encryption and uncompromising protection for every transaction</p>
+    </div>
+
+    <div class="glass-card p-8 rounded-2xl text-center">
+      <p class="text-5xl mb-4">💡</p>
+      <h4 class="text-xl font-bold mb-3">Innovation</h4>
+      <p class="text-gray-300">Constantly pushing boundaries to deliver next-gen fintech solutions</p>
+    </div>
+
+    <div class="glass-card p-8 rounded-2xl text-center">
+      <p class="text-5xl mb-4">🤝</p>
+      <h4 class="text-xl font-bold mb-3">Accessibility</h4>
+      <p class="text-gray-300">Financial services for everyone, regardless of background or location</p>
+    </div>
+
+    <div class="glass-card p-8 rounded-2xl text-center">
+      <p class="text-5xl mb-4">⚡</p>
+      <h4 class="text-xl font-bold mb-3">Speed</h4>
+      <p class="text-gray-300">Lightning-fast transactions and instant service without delays</p>
+    </div>
+
+    <div class="glass-card p-8 rounded-2xl text-center">
+      <p class="text-5xl mb-4">🌍</p>
+      <h4 class="text-xl font-bold mb-3">Impact</h4>
+      <p class="text-gray-300">Making a meaningful difference in Africa's digital payment landscape</p>
+    </div>
+
+    <div class="glass-card p-8 rounded-2xl text-center">
+      <p class="text-5xl mb-4">🎯</p>
+      <h4 class="text-xl font-bold mb-3">Excellence</h4>
+      <p class="text-gray-300">Uncompromising commitment to quality in everything we do</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="px-6 py-24 max-w-4xl mx-auto">
+  <div class="neon-gradient p-16 rounded-3xl text-center relative overflow-hidden">
+    <h3 class="text-4xl font-bold mb-6 relative z-10">Join Our Mission</h3>
+    <p class="text-lg text-gray-100 mb-8 relative z-10">Be part of the fintech revolution transforming Africa. Start with VITCH today.</p>
+    <a href="contact.html" class="inline-block bg-white text-black px-12 py-4 rounded-full font-bold text-lg hover:scale-110 transition transform">Get Started</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-gray-800 mt-24 py-12 px-6">
+  <div class="max-w-7xl mx-auto text-center text-gray-500 text-sm">
+    <p>© 2026 VITCH. All rights reserved. | Founded April 13, 2026</p>
+  </div>
+</footer>
+
 </body>
 </html>

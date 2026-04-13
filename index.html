@@ -1,220 +1,471 @@
 <!DOCTYPE html>
-<html lang="fr" class="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VITCH - Révolutionner les paiements numériques en Afrique</title>
+    <title>VITCH - The Future of African Digital Payments</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#667eea',
-                        secondary: '#764ba2',
-                    }
-                }
-            }
-        }
-    </script>
     <style>
-        .card-hover:hover {
-            transform: translateY(-10px);
-            transition: transform 0.3s ease;
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        * {
+            font-family: 'Inter', sans-serif;
         }
-        .bank-card {
-            background: linear-gradient(135deg, #1e3a8a, #3730a3);
-            border-radius: 15px;
-            padding: 20px;
-            color: white;
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a0f3f 50%, #0d1b2a 100%);
+            min-height: 100vh;
+        }
+
+        .bg-gradient-dark {
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a0f2e 100%);
+        }
+
+        .neon-gradient {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+        }
+
+        .neon-text {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 30px 80px rgba(139, 92, 246, 0.4);
+        }
+
+        .btn-glow {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
-        .bank-card::before {
+
+        .btn-glow::before {
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-            border-radius: 15px;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.5s ease;
         }
-        .chip {
-            width: 40px;
-            height: 30px;
-            background: linear-gradient(45deg, #ffd700, #ffed4e);
-            border-radius: 5px;
+
+        .btn-glow:hover::before {
+            left: 100%;
+        }
+
+        .btn-glow:hover {
+            transform: scale(1.08);
+            box-shadow: 0 20px 50px rgba(139, 92, 246, 0.5);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .virtual-card {
+            perspective: 1000px;
+            cursor: pointer;
+            height: 220px;
             position: relative;
         }
-        .chip::after {
+
+        .virtual-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transform-style: preserve-3d;
+        }
+
+        .virtual-card:hover .virtual-card-inner {
+            transform: rotateY(8deg) rotateX(-5deg);
+        }
+
+        .card-front {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            padding: 24px;
+            color: white;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-front::before {
             content: '';
             position: absolute;
-            top: 5px;
-            left: 5px;
-            width: 20px;
-            height: 20px;
-            background: #b91c1c;
-            border-radius: 50%;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translate(-50%, -50%); }
+            50% { transform: translate(0, 0); }
+            100% { transform: translate(50%, 50%); }
+        }
+
+        .card-chip {
+            width: 50px;
+            height: 40px;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            border-radius: 8px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 10;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-box {
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-8px);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-box:hover .feature-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .animate-fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-delay {
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .animate-fade-in-delay-2 {
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .navbar-blur {
+            background: rgba(15, 15, 30, 0.7);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-text {
+            line-height: 1.2;
+            letter-spacing: -1px;
         }
     </style>
 </head>
-<body class="bg-gray-900 text-white">
-    <!-- Navbar -->
-    <nav class="bg-gray-800 p-4">
-        <div class="container mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold text-primary">VITCH</a>
-            <ul class="flex space-x-6">
-                <li><a href="index.html" class="hover:text-primary transition">Accueil</a></li>
-                <li><a href="services.html" class="hover:text-primary transition">Services</a></li>
-                <li><a href="about.html" class="hover:text-primary transition">À propos</a></li>
-                <li><a href="contact.html" class="hover:text-primary transition">Contact</a></li>
-                <li><a href="dashboard.html" class="hover:text-primary transition">Dashboard</a></li>
-            </ul>
-        </div>
+<body class="text-white overflow-x-hidden">
+
+<!-- NAVBAR -->
+<header class="navbar-blur sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto flex justify-between items-center p-6">
+    <div class="flex items-center space-x-2">
+      <div class="text-3xl font-bold neon-text">V</div>
+      <h1 class="text-2xl font-bold neon-text">ITCH</h1>
+    </div>
+    <nav class="hidden md:flex space-x-8 items-center">
+      <a href="index.html" class="hover:text-purple-400 transition duration-300 font-medium">Home</a>
+      <a href="services.html" class="hover:text-purple-400 transition duration-300 font-medium">Services</a>
+      <a href="about.html" class="hover:text-purple-400 transition duration-300 font-medium">About</a>
+      <a href="contact.html" class="btn-glow px-6 py-2 rounded-full font-semibold text-sm">Contact</a>
     </nav>
+    <button class="md:hidden text-purple-400 text-2xl">☰</button>
+  </div>
+</header>
 
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-r from-purple-900 to-blue-900 py-20">
-        <div class="container mx-auto text-center">
-            <h1 class="text-5xl font-bold mb-4">VITCH</h1>
-            <p class="text-xl mb-6">La nouvelle génération de paiements numériques en Afrique</p>
-            <p class="text-lg mb-8 max-w-2xl mx-auto">
-                Créée le 13 avril 2026, VITCH innove dans la fintech pour offrir simplicité et sécurité dans les transactions financières.
-            </p>
-            <div class="space-x-4">
-                <a href="dashboard.html" class="bg-primary hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition">Accéder au Dashboard</a>
-                <a href="contact.html" class="bg-secondary hover:bg-purple-700 text-white px-6 py-3 rounded-lg transition">Nous contacter</a>
+<!-- HERO -->
+<section class="relative min-h-screen flex items-center justify-center px-6 py-20 overflow-hidden">
+  <!-- Animated background elements -->
+  <div class="absolute top-20 right-10 w-96 h-96 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+  <div class="absolute bottom-20 left-10 w-96 h-96 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+  
+  <div class="relative z-10 text-center max-w-5xl mx-auto">
+    <h2 class="text-7xl md:text-8xl font-black mb-6 neon-text hero-text animate-fade-in" style="font-size: 120px; text-shadow: 0 0 60px rgba(139, 92, 246, 0.3);">VITCH</h2>
+    
+    <p class="text-3xl md:text-4xl font-bold text-gray-100 mb-6 animate-fade-in-delay">The Future of Digital Payments in Africa</p>
+    
+    <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed animate-fade-in-delay-2">
+      Founded on <span class="text-purple-400 font-semibold">April 13, 2026</span> by a team of passionate developers and led by <span class="text-purple-400 font-semibold">Melkisédeck DJIMADJO</span>, VITCH brings cutting-edge fintech innovation with uncompromising security and simplicity to revolutionize digital payments across Africa.
+    </p>
+    
+    <div class="flex flex-col md:flex-row gap-6 justify-center items-center animate-fade-in-delay-2">
+      <a href="contact.html" class="btn-glow px-10 py-4 rounded-full font-bold text-lg inline-block">Get Started Now</a>
+      <a href="services.html" class="glass-card px-10 py-4 rounded-full font-bold text-lg inline-block hover:scale-105">Learn More</a>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS SECTION -->
+<section class="px-6 py-24 max-w-7xl mx-auto">
+  <div class="text-center mb-16">
+    <h3 class="text-5xl md:text-6xl font-black neon-text mb-4">Our Virtual Cards</h3>
+    <p class="text-gray-400 text-lg">Choose the perfect card for your needs</p>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-8">
+
+    <!-- STANDARD CARD -->
+    <a href="standard.html" class="card-hover group block">
+      <div class="glass-card p-8 rounded-2xl h-full border border-gray-700 group-hover:border-blue-500">
+        <!-- Card Visual -->
+        <div class="virtual-card mb-6">
+          <div class="virtual-card-inner">
+            <div class="card-front bg-gradient-to-br from-blue-600 via-blue-500 to-purple-600">
+              <div class="flex justify-between items-start relative z-20">
+                <span class="text-xl font-bold">VITCH</span>
+                <div class="card-chip"></div>
+              </div>
+              <div>
+                <div class="text-2xl font-mono tracking-widest mb-4 relative z-20">•••• •••• •••• 1234</div>
+                <div class="flex justify-between text-sm relative z-20">
+                  <span class="font-semibold">STANDARD</span>
+                  <span>12/28</span>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </section>
 
-    <!-- Products Section -->
-    <section class="py-20 bg-gray-800">
-        <div class="container mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-12">Nos Cartes Virtuelles</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Standard Card -->
-                <a href="standard.html" class="card-hover">
-                    <div class="bank-card">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="chip"></div>
-                            <span class="text-sm">VITCH</span>
-                        </div>
-                        <div class="text-center mb-4">
-                            <p class="text-lg font-bold">STANDARD</p>
-                            <p class="text-sm">**** **** **** 1234</p>
-                        </div>
-                        <div class="flex justify-between">
-                            <span>2$</span>
-                            <span>5% frais</span>
-                        </div>
-                    </div>
-                    <div class="mt-4 text-center">
-                        <h3 class="text-xl font-semibold">Carte Standard</h3>
-                        <p>Idéale pour débutants, création rapide, paiements sécurisés.</p>
-                    </div>
-                </a>
+        <h4 class="text-2xl font-bold mb-2">Standard Card</h4>
+        <p class="text-purple-400 text-lg font-semibold mb-4">$2 per card</p>
+        
+        <div class="space-y-2 mb-6">
+          <p class="text-gray-300 flex items-center"><span class="text-blue-400 mr-2">✓</span> 5% transaction fee</p>
+          <p class="text-gray-300 flex items-center"><span class="text-blue-400 mr-2">✓</span> Perfect for beginners</p>
+          <p class="text-gray-300 flex items-center"><span class="text-blue-400 mr-2">✓</span> Instant creation</p>
+          <p class="text-gray-300 flex items-center"><span class="text-blue-400 mr-2">✓</span> Secure online payments</p>
+        </div>
 
-                <!-- Premium Card -->
-                <a href="premium.html" class="card-hover">
-                    <div class="bank-card">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="chip"></div>
-                            <span class="text-sm">VITCH</span>
-                        </div>
-                        <div class="text-center mb-4">
-                            <p class="text-lg font-bold">PREMIUM</p>
-                            <p class="text-sm">**** **** **** 5678</p>
-                        </div>
-                        <div class="flex justify-between">
-                            <span>5$</span>
-                            <span>3% frais</span>
-                        </div>
-                    </div>
-                    <div class="mt-4 text-center">
-                        <h3 class="text-xl font-semibold">Carte Premium</h3>
-                        <p>Sécurité renforcée, traitement plus rapide, pour utilisateurs réguliers.</p>
-                    </div>
-                </a>
+        <div class="text-blue-400 font-semibold group-hover:text-blue-300 transition">
+          Explore → 
+        </div>
+      </div>
+    </a>
 
-                <!-- VIP Card -->
-                <a href="vip.html" class="card-hover">
-                    <div class="bank-card">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="chip"></div>
-                            <span class="text-sm">VITCH</span>
-                        </div>
-                        <div class="text-center mb-4">
-                            <p class="text-lg font-bold">VIP</p>
-                            <p class="text-sm">**** **** **** 9012</p>
-                        </div>
-                        <div class="flex justify-between">
-                            <span>10$</span>
-                            <span>1% frais</span>
-                        </div>
-                    </div>
-                    <div class="mt-4 text-center">
-                        <h3 class="text-xl font-semibold">Carte VIP</h3>
-                        <p>Performance maximale, transactions prioritaires, expérience premium.</p>
-                    </div>
-                </a>
+    <!-- PREMIUM CARD (FEATURED) -->
+    <a href="premium.html" class="card-hover group block md:scale-105">
+      <div class="glass-card p-8 rounded-2xl h-full border-2 border-yellow-500 bg-gradient-to-br from-yellow-500/10 to-orange-500/10">
+        <div class="absolute -top-4 -right-4 bg-gradient-to-r from-yellow-400 to-orange-400 text-black px-4 py-2 rounded-full text-xs font-bold">RECOMMENDED</div>
+        
+        <!-- Card Visual -->
+        <div class="virtual-card mb-6">
+          <div class="virtual-card-inner">
+            <div class="card-front bg-gradient-to-br from-yellow-500 via-yellow-400 to-orange-500">
+              <div class="flex justify-between items-start relative z-20">
+                <span class="text-xl font-bold">VITCH</span>
+                <div class="card-chip"></div>
+              </div>
+              <div>
+                <div class="text-2xl font-mono tracking-widest mb-4 relative z-20">•••• •••• •••• 5678</div>
+                <div class="flex justify-between text-sm relative z-20">
+                  <span class="font-semibold">PREMIUM</span>
+                  <span>12/28</span>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </section>
 
-    <!-- Features Section -->
-    <section class="py-20 bg-gray-900">
-        <div class="container mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-12">Fonctionnalités</h2>
-            <div class="grid md:grid-cols-4 gap-8">
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-semibold mb-4">Cartes Virtuelles</h3>
-                    <p>Créez et gérez vos cartes virtuelles en toute sécurité.</p>
+        <h4 class="text-2xl font-bold mb-2">Premium Card</h4>
+        <p class="text-yellow-400 text-lg font-semibold mb-4">$5 per card</p>
+        
+        <div class="space-y-2 mb-6">
+          <p class="text-gray-300 flex items-center"><span class="text-yellow-400 mr-2">✓</span> Only 3% transaction fee</p>
+          <p class="text-gray-300 flex items-center"><span class="text-yellow-400 mr-2">✓</span> Enhanced security</p>
+          <p class="text-gray-300 flex items-center"><span class="text-yellow-400 mr-2">✓</span> Faster processing</p>
+          <p class="text-gray-300 flex items-center"><span class="text-yellow-400 mr-2">✓</span> Priority support</p>
+        </div>
+
+        <div class="text-yellow-400 font-semibold group-hover:text-yellow-300 transition">
+          Explore → 
+        </div>
+      </div>
+    </a>
+
+    <!-- VIP CARD -->
+    <a href="vip.html" class="card-hover group block">
+      <div class="glass-card p-8 rounded-2xl h-full border border-gray-700 group-hover:border-pink-500">
+        <!-- Card Visual -->
+        <div class="virtual-card mb-6">
+          <div class="virtual-card-inner">
+            <div class="card-front bg-gradient-to-br from-pink-600 via-pink-500 to-red-600">
+              <div class="flex justify-between items-start relative z-20">
+                <span class="text-xl font-bold">VITCH</span>
+                <div class="card-chip"></div>
+              </div>
+              <div>
+                <div class="text-2xl font-mono tracking-widest mb-4 relative z-20">•••• •••• •••• 9999</div>
+                <div class="flex justify-between text-sm relative z-20">
+                  <span class="font-semibold">VIP</span>
+                  <span>12/28</span>
                 </div>
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-semibold mb-4">Paiements Sécurisés</h3>
-                    <p>Transactions protégées par les dernières technologies.</p>
-                </div>
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-semibold mb-4">Transactions Rapides</h3>
-                    <p>Effectuez vos paiements instantanément.</p>
-                </div>
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-semibold mb-4">Système de Messagerie</h3>
-                    <p>Communiquez facilement avec notre support.</p>
-                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </section>
 
-    <!-- CTA Section -->
-    <section class="py-20 bg-gradient-to-r from-purple-900 to-blue-900 text-center">
-        <div class="container mx-auto">
-            <h2 class="text-3xl font-bold mb-6">Rejoignez VITCH aujourd'hui et prenez le contrôle de vos paiements</h2>
-            <a href="contact.html" class="bg-primary hover:bg-blue-700 text-white px-8 py-4 rounded-lg transition text-lg">Commencer</a>
+        <h4 class="text-2xl font-bold mb-2">VIP Card</h4>
+        <p class="text-pink-400 text-lg font-semibold mb-4">$10 per card</p>
+        
+        <div class="space-y-2 mb-6">
+          <p class="text-gray-300 flex items-center"><span class="text-pink-400 mr-2">✓</span> Ultra-low 1% fee</p>
+          <p class="text-gray-300 flex items-center"><span class="text-pink-400 mr-2">✓</span> Maximum security</p>
+          <p class="text-gray-300 flex items-center"><span class="text-pink-400 mr-2">✓</span> Priority transactions</p>
+          <p class="text-gray-300 flex items-center"><span class="text-pink-400 mr-2">✓</span> VIP experience</p>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 py-8 text-center">
-        <p>&copy; 2026 VITCH. Tous droits réservés.</p>
-    </footer>
+        <div class="text-pink-400 font-semibold group-hover:text-pink-300 transition">
+          Explore → 
+        </div>
+      </div>
+    </a>
 
-    <script>
-        // Simple animation on load
-        document.addEventListener('DOMContentLoaded', () => {
-            const cards = document.querySelectorAll('.card-hover');
-            cards.forEach(card => {
-                card.addEventListener('mouseenter', () => {
-                    card.style.transform = 'translateY(-10px) scale(1.05)';
-                });
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = 'translateY(0) scale(1)';
-                });
-            });
-        });
-    </script>
+  </div>
+</section>
+
+<!-- FEATURES SECTION -->
+<section class="px-6 py-24 max-w-7xl mx-auto">
+  <div class="text-center mb-16">
+    <h3 class="text-5xl md:text-6xl font-black neon-text mb-4">Why Choose VITCH?</h3>
+    <p class="text-gray-400 text-lg">Everything you need for secure and efficient digital payments</p>
+  </div>
+
+  <div class="grid md:grid-cols-4 gap-8">
+    <div class="glass-card p-8 rounded-2xl text-center feature-box">
+      <div class="feature-icon">💳</div>
+      <h4 class="text-xl font-bold mb-3">Virtual Cards</h4>
+      <p class="text-gray-400">Instant digital cards for online shopping and payments. No physical card needed.</p>
+    </div>
+
+    <div class="glass-card p-8 rounded-2xl text-center feature-box">
+      <div class="feature-icon">🔒</div>
+      <h4 class="text-xl font-bold mb-3">Bank-Grade Security</h4>
+      <p class="text-gray-400">Military-grade encryption and fraud protection to keep your money safe 24/7.</p>
+    </div>
+
+    <div class="glass-card p-8 rounded-2xl text-center feature-box">
+      <div class="feature-icon">⚡</div>
+      <h4 class="text-xl font-bold mb-3">Lightning Fast</h4>
+      <p class="text-gray-400">Instant transaction processing with real-time notifications and balance updates.</p>
+    </div>
+
+    <div class="glass-card p-8 rounded-2xl text-center feature-box">
+      <div class="feature-icon">💬</div>
+      <h4 class="text-xl font-bold mb-3">Integrated Support</h4>
+      <p class="text-gray-400">Built-in messaging system for seamless communication with our support team.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="px-6 py-24 max-w-4xl mx-auto">
+  <div class="neon-gradient p-12 md:p-16 rounded-3xl text-center relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-10 transform -skew-y-3"></div>
+    
+    <h3 class="text-4xl md:text-5xl font-black mb-6 relative z-10">Ready to Take Control?</h3>
+    <p class="text-lg md:text-xl text-gray-100 mb-8 relative z-10 max-w-2xl mx-auto">
+      Join thousands of users who trust VITCH for secure, fast, and affordable digital payments. Get started in seconds.
+    </p>
+    <a href="contact.html" class="inline-block bg-white text-black px-12 py-4 rounded-full font-bold text-lg hover:scale-110 transition transform relative z-10">
+      Start Your Journey Today
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-gray-800 mt-24 py-12 px-6">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-8 mb-8">
+    <div>
+      <div class="flex items-center space-x-2 mb-4">
+        <div class="text-2xl font-bold neon-text">V</div>
+        <h4 class="text-xl font-bold neon-text">ITCH</h4>
+      </div>
+      <p class="text-gray-400 text-sm">The future of digital payments in Africa</p>
+    </div>
+    <div>
+      <h5 class="font-bold mb-4">Product</h5>
+      <ul class="space-y-2 text-gray-400 text-sm">
+        <li><a href="services.html" class="hover:text-purple-400 transition">Virtual Cards</a></li>
+        <li><a href="services.html" class="hover:text-purple-400 transition">Payments</a></li>
+        <li><a href="about.html" class="hover:text-purple-400 transition">About</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5 class="font-bold mb-4">Company</h5>
+      <ul class="space-y-2 text-gray-400 text-sm">
+        <li><a href="about.html" class="hover:text-purple-400 transition">Team</a></li>
+        <li><a href="about.html" class="hover:text-purple-400 transition">Mission</a></li>
+        <li><a href="contact.html" class="hover:text-purple-400 transition">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5 class="font-bold mb-4">Legal</h5>
+      <ul class="space-y-2 text-gray-400 text-sm">
+        <li><a href="#" class="hover:text-purple-400 transition">Privacy</a></li>
+        <li><a href="#" class="hover:text-purple-400 transition">Terms</a></li>
+        <li><a href="#" class="hover:text-purple-400 transition">Security</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+    <p>© 2026 VITCH. All rights reserved. | Founded April 13, 2026</p>
+  </div>
+</footer>
+
 </body>
 </html>

@@ -1,115 +1,248 @@
 <!DOCTYPE html>
-<html lang="fr" class="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carte Premium - VITCH</title>
+    <title>Premium Card - VITCH</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#667eea',
-                        secondary: '#764ba2',
-                    }
-                }
-            }
-        }
-    </script>
     <style>
-        .bank-card {
-            background: linear-gradient(135deg, #1e3a8a, #3730a3);
-            border-radius: 15px;
-            padding: 20px;
-            color: white;
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a0f3f 50%, #0d1b2a 100%);
+        }
+
+        .neon-text {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar-blur {
+            background: rgba(15, 15, 30, 0.7);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-glow {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-glow:hover {
+            transform: scale(1.08);
+            box-shadow: 0 20px 50px rgba(139, 92, 246, 0.5);
+        }
+
+        .card-3d {
+            perspective: 1000px;
+        }
+
+        .card-inner {
             position: relative;
-            overflow: hidden;
+            transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
-        .bank-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-            border-radius: 15px;
+
+        .card-3d:hover .card-inner {
+            transform: rotateY(8deg) rotateX(-5deg);
         }
-        .chip {
-            width: 40px;
-            height: 30px;
-            background: linear-gradient(45deg, #ffd700, #ffed4e);
-            border-radius: 5px;
-            position: relative;
+
+        .card-chip {
+            width: 60px;
+            height: 45px;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            border-radius: 10px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.3);
         }
-        .chip::after {
-            content: '';
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            width: 20px;
-            height: 20px;
-            background: #b91c1c;
-            border-radius: 50%;
+
+        .neon-gradient {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+        }
+
+        .badge-recommended {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: black;
         }
     </style>
 </head>
-<body class="bg-gray-900 text-white">
-    <!-- Navbar -->
-    <nav class="bg-gray-800 p-4">
-        <div class="container mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold text-primary">VITCH</a>
-            <ul class="flex space-x-6">
-                <li><a href="index.html" class="hover:text-primary transition">Accueil</a></li>
-                <li><a href="services.html" class="hover:text-primary transition">Services</a></li>
-                <li><a href="about.html" class="hover:text-primary transition">À propos</a></li>
-                <li><a href="contact.html" class="hover:text-primary transition">Contact</a></li>
-                <li><a href="dashboard.html" class="hover:text-primary transition">Dashboard</a></li>
-            </ul>
-        </div>
+<body class="text-white">
+
+<!-- NAVBAR -->
+<header class="navbar-blur sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto flex justify-between items-center p-6">
+    <div class="flex items-center space-x-2">
+      <div class="text-3xl font-bold neon-text">V</div>
+      <h1 class="text-2xl font-bold neon-text">ITCH</h1>
+    </div>
+    <nav class="hidden md:flex space-x-8 items-center">
+      <a href="index.html" class="hover:text-purple-400 transition duration-300 font-medium">Home</a>
+      <a href="services.html" class="hover:text-purple-400 transition duration-300 font-medium">Services</a>
+      <a href="about.html" class="hover:text-purple-400 transition duration-300 font-medium">About</a>
+      <a href="contact.html" class="btn-glow px-6 py-2 rounded-full font-semibold text-sm">Contact</a>
     </nav>
+  </div>
+</header>
 
-    <!-- Card Detail -->
-    <section class="py-20 bg-gray-800">
-        <div class="container mx-auto text-center">
-            <h1 class="text-4xl font-bold mb-12">Carte Premium</h1>
-            <div class="max-w-md mx-auto mb-12">
-                <div class="bank-card">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="chip"></div>
-                        <span class="text-sm">VITCH</span>
-                    </div>
-                    <div class="text-center mb-4">
-                        <p class="text-lg font-bold">PREMIUM</p>
-                        <p class="text-sm">**** **** **** 5678</p>
-                    </div>
-                    <div class="flex justify-between">
-                        <span>5$</span>
-                        <span>3% frais</span>
-                    </div>
-                </div>
-            </div>
-            <div class="max-w-2xl mx-auto">
-                <h2 class="text-2xl font-semibold mb-6">Description</h2>
-                <p class="text-lg mb-6">La carte Premium offre une meilleure sécurité et un traitement plus rapide. Coût de 5$ avec des frais de transaction réduits à 3%.</p>
-                <h2 class="text-2xl font-semibold mb-6">Avantages</h2>
-                <ul class="text-left list-disc list-inside mb-6">
-                    <li>Sécurité renforcée</li>
-                    <li>Traitement plus rapide</li>
-                    <li>Recommandée pour utilisateurs réguliers</li>
-                </ul>
-                <h2 class="text-2xl font-semibold mb-6">Frais</h2>
-                <p class="text-lg mb-6">Coût initial: 5$<br>Frais de transaction: 3%</p>
-                <a href="contact.html" class="bg-primary hover:bg-blue-700 text-white px-8 py-4 rounded-lg transition text-lg">Obtenir cette carte</a>
-            </div>
+<!-- HERO SECTION -->
+<section class="text-center py-16 px-6 relative">
+  <div class="absolute top-4 right-6 badge-recommended px-4 py-2 rounded-full font-bold text-sm">⭐ RECOMMENDED</div>
+  <h1 class="text-5xl md:text-6xl font-black neon-text mb-4">Premium Card</h1>
+  <p class="text-gray-400 text-lg">The sweet spot for regular users • Best value</p>
+</section>
+
+<!-- CARD SHOWCASE -->
+<section class="px-6 py-12 max-w-5xl mx-auto">
+  <div class="flex justify-center mb-16">
+    <div class="card-3d">
+      <div class="card-inner bg-gradient-to-br from-yellow-500 via-yellow-400 to-orange-500 p-8 rounded-3xl shadow-2xl w-96 h-56">
+        <div class="flex justify-between items-start mb-8 relative z-20">
+          <span class="text-white font-bold text-2xl">VITCH</span>
+          <div class="card-chip"></div>
         </div>
-    </section>
+        <div class="text-white text-2xl font-mono tracking-widest mb-8 relative z-20">•••• •••• •••• 5678</div>
+        <div class="flex justify-between text-white text-sm relative z-20">
+          <span class="font-bold">PREMIUM CARD</span>
+          <span>12/28</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 py-8 text-center">
-        <p>&copy; 2026 VITCH. Tous droits réservés.</p>
-    </footer>
+<!-- PRICE & DETAILS -->
+<section class="px-6 py-12 max-w-5xl mx-auto">
+  <div class="grid md:grid-cols-3 gap-8 mb-16">
+    <div class="glass-card p-8 rounded-2xl text-center border-2 border-yellow-500">
+      <p class="text-gray-400 text-sm mb-2">CARD COST</p>
+      <p class="text-4xl font-bold text-yellow-400">$5</p>
+      <p class="text-gray-400 text-sm mt-2">One-time payment</p>
+    </div>
+    <div class="glass-card p-8 rounded-2xl text-center border-2 border-yellow-500">
+      <p class="text-gray-400 text-sm mb-2">TRANSACTION FEE</p>
+      <p class="text-4xl font-bold text-yellow-400">3%</p>
+      <p class="text-gray-400 text-sm mt-2">Per transaction</p>
+    </div>
+    <div class="glass-card p-8 rounded-2xl text-center border-2 border-yellow-500">
+      <p class="text-gray-400 text-sm mb-2">SETUP TIME</p>
+      <p class="text-4xl font-bold text-yellow-400">&lt; 1min</p>
+      <p class="text-gray-400 text-sm mt-2">Instant creation</p>
+    </div>
+  </div>
+</section>
+
+<!-- DESCRIPTION -->
+<section class="px-6 py-12 max-w-5xl mx-auto">
+  <div class="glass-card p-10 rounded-2xl mb-12">
+    <h2 class="text-3xl font-bold neon-text mb-6">About Premium Card</h2>
+    <p class="text-gray-300 text-lg leading-relaxed">
+      The Premium Card strikes the perfect balance between affordability and advanced features. At just $5, it's the most recommended option for regular users who make frequent digital payments. With a lower 3% transaction fee compared to Standard, you'll save money on every purchase. It comes with enhanced security features and faster transaction processing, making it ideal for professionals, online shoppers, and business owners.
+    </p>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="px-6 py-12 max-w-5xl mx-auto">
+  <h2 class="text-3xl font-bold neon-text mb-10 text-center">Premium Features</h2>
+  
+  <div class="feature-list mb-12">
+    <div class="glass-card p-6 rounded-2xl">
+      <p class="text-2xl mb-3">⚡</p>
+      <h3 class="font-bold mb-2">Priority Processing</h3>
+      <p class="text-gray-400">Faster transaction approval and settlement</p>
+    </div>
+
+    <div class="glass-card p-6 rounded-2xl">
+      <p class="text-2xl mb-3">🛡️</p>
+      <h3 class="font-bold mb-2">Enhanced Security</h3>
+      <p class="text-gray-400">Advanced fraud detection and protection</p>
+    </div>
+
+    <div class="glass-card p-6 rounded-2xl">
+      <p class="text-2xl mb-3">💰</p>
+      <h3 class="font-bold mb-2">Lower Fees</h3>
+      <p class="text-gray-400">Only 3% transaction fee saves you money</p>
+    </div>
+
+    <div class="glass-card p-6 rounded-2xl">
+      <p class="text-2xl mb-3">📊</p>
+      <h3 class="font-bold mb-2">Advanced Analytics</h3>
+      <p class="text-gray-400">Detailed spending insights and reports</p>
+    </div>
+
+    <div class="glass-card p-6 rounded-2xl">
+      <p class="text-2xl mb-3">🎯</p>
+      <h3 class="font-bold mb-2">Priority Support</h3>
+      <p class="text-gray-400">Faster response times from our team</p>
+    </div>
+
+    <div class="glass-card p-6 rounded-2xl">
+      <p class="text-2xl mb-3">🌟</p>
+      <h3 class="font-bold mb-2">Perfect Balance</h3>
+      <p class="text-gray-400">Best value for regular users</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="px-6 py-12 max-w-5xl mx-auto">
+  <h2 class="text-3xl font-bold neon-text mb-10 text-center">Compare All Cards</h2>
+
+  <div class="grid md:grid-cols-3 gap-6">
+    <a href="standard.html" class="glass-card p-8 rounded-2xl hover:border-blue-500 border-2 border-gray-700 text-center transition">
+      <h3 class="font-bold text-lg mb-2">Standard</h3>
+      <p class="text-blue-400 font-bold text-2xl mb-4">$2</p>
+      <p class="text-gray-400 text-sm">5% fee</p>
+    </a>
+
+    <a href="premium.html" class="glass-card p-8 rounded-2xl border-2 border-yellow-500 text-center">
+      <div class="badge-recommended px-3 py-1 rounded-full font-bold text-xs mb-4 inline-block">RECOMMENDED</div>
+      <h3 class="font-bold text-lg mb-2">Premium</h3>
+      <p class="text-yellow-400 font-bold text-2xl mb-4">$5</p>
+      <p class="text-gray-400 text-sm">3% fee</p>
+    </a>
+
+    <a href="vip.html" class="glass-card p-8 rounded-2xl hover:border-pink-500 border-2 border-gray-700 text-center transition">
+      <h3 class="font-bold text-lg mb-2">VIP</h3>
+      <p class="text-pink-400 font-bold text-2xl mb-4">$10</p>
+      <p class="text-gray-400 text-sm">1% fee • Premium</p>
+    </a>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="px-6 py-24 max-w-4xl mx-auto">
+  <div class="neon-gradient p-16 rounded-3xl text-center">
+    <h2 class="text-4xl font-bold mb-6">Get Your Premium Card Today</h2>
+    <p class="text-lg text-gray-100 mb-8">Join thousands of satisfied users. Only $5!</p>
+    <button class="bg-white text-black px-12 py-4 rounded-full font-bold text-lg hover:scale-110 transition transform shadow-lg">
+      Get This Card
+    </button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-gray-800 mt-24 py-12 px-6">
+  <div class="max-w-7xl mx-auto text-center text-gray-500 text-sm">
+    <p>© 2026 VITCH. All rights reserved.</p>
+  </div>
+</footer>
+
 </body>
 </html>
