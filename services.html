@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - VITCH</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#667eea',
+                        secondary: '#764ba2',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Navbar -->
+    <nav class="bg-gray-800 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-primary">VITCH</a>
+            <ul class="flex space-x-6">
+                <li><a href="index.html" class="hover:text-primary transition">Accueil</a></li>
+                <li><a href="services.html" class="hover:text-primary transition">Services</a></li>
+                <li><a href="about.html" class="hover:text-primary transition">À propos</a></li>
+                <li><a href="contact.html" class="hover:text-primary transition">Contact</a></li>
+                <li><a href="dashboard.html" class="hover:text-primary transition">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Services Section -->
+    <section class="py-20 bg-gray-800">
+        <div class="container mx-auto">
+            <h1 class="text-4xl font-bold text-center mb-12">Nos Services</h1>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-gray-700 p-8 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-semibold mb-4">Cartes Virtuelles</h2>
+                    <p>Créez des cartes virtuelles pour des achats en ligne sécurisés. Choisissez parmi nos options Standard, Premium et VIP pour répondre à vos besoins.</p>
+                </div>
+                <div class="bg-gray-700 p-8 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-semibold mb-4">Paiements en Ligne</h2>
+                    <p>Effectuez des paiements rapides et sécurisés sur toutes les plateformes. Notre système garantit la protection de vos données.</p>
+                </div>
+                <div class="bg-gray-700 p-8 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-semibold mb-4">Transferts d'Argent (Bientôt)</h2>
+                    <p>Envoyez et recevez de l'argent instantanément. Cette fonctionnalité sera disponible prochainement pour faciliter vos transactions.</p>
+                </div>
+                <div class="bg-gray-700 p-8 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-semibold mb-4">Système de Messagerie Intégré</h2>
+                    <p>Communiquez avec notre équipe de support et vos contacts directement via notre plateforme pour une assistance rapide.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-8 text-center">
+        <p>&copy; 2026 VITCH. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

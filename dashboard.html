@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - VITCH</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#667eea',
+                        secondary: '#764ba2',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Navbar -->
+    <nav class="bg-gray-800 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-primary">VITCH</a>
+            <ul class="flex space-x-6">
+                <li><a href="index.html" class="hover:text-primary transition">Accueil</a></li>
+                <li><a href="services.html" class="hover:text-primary transition">Services</a></li>
+                <li><a href="about.html" class="hover:text-primary transition">À propos</a></li>
+                <li><a href="contact.html" class="hover:text-primary transition">Contact</a></li>
+                <li><a href="dashboard.html" class="hover:text-primary transition">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Dashboard -->
+    <section class="py-20 bg-gray-800">
+        <div class="container mx-auto">
+            <h1 class="text-4xl font-bold mb-12">Dashboard</h1>
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="bg-gray-700 p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-semibold mb-4">Solde</h2>
+                    <p class="text-3xl font-bold text-primary">$1,250.00</p>
+                </div>
+                <div class="bg-gray-700 p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-semibold mb-4">Cartes</h2>
+                    <p>3 cartes actives</p>
+                </div>
+                <div class="bg-gray-700 p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-semibold mb-4">Transactions</h2>
+                    <p>15 ce mois</p>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-gray-700 p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-semibold mb-4">Informations utilisateur</h2>
+                    <p><strong>Email:</strong> sctvitch@gmail.com</p>
+                    <p><strong>Mot de passe:</strong> oLR0RB7KiA</p>
+                    <p><strong>Statut:</strong> Actif</p>
+                </div>
+                <div class="bg-gray-700 p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-semibold mb-4">Dernières transactions</h2>
+                    <ul class="space-y-2">
+                        <li>Achat en ligne - $50.00</li>
+                        <li>Transfert - $100.00</li>
+                        <li>Paiement facture - $25.00</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-8 text-center">
+        <p>&copy; 2026 VITCH. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

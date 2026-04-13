@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carte Standard - VITCH</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#667eea',
+                        secondary: '#764ba2',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .bank-card {
+            background: linear-gradient(135deg, #1e3a8a, #3730a3);
+            border-radius: 15px;
+            padding: 20px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .bank-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            border-radius: 15px;
+        }
+        .chip {
+            width: 40px;
+            height: 30px;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            border-radius: 5px;
+            position: relative;
+        }
+        .chip::after {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 20px;
+            height: 20px;
+            background: #b91c1c;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Navbar -->
+    <nav class="bg-gray-800 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-primary">VITCH</a>
+            <ul class="flex space-x-6">
+                <li><a href="index.html" class="hover:text-primary transition">Accueil</a></li>
+                <li><a href="services.html" class="hover:text-primary transition">Services</a></li>
+                <li><a href="about.html" class="hover:text-primary transition">À propos</a></li>
+                <li><a href="contact.html" class="hover:text-primary transition">Contact</a></li>
+                <li><a href="dashboard.html" class="hover:text-primary transition">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Card Detail -->
+    <section class="py-20 bg-gray-800">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl font-bold mb-12">Carte Standard</h1>
+            <div class="max-w-md mx-auto mb-12">
+                <div class="bank-card">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="chip"></div>
+                        <span class="text-sm">VITCH</span>
+                    </div>
+                    <div class="text-center mb-4">
+                        <p class="text-lg font-bold">STANDARD</p>
+                        <p class="text-sm">**** **** **** 1234</p>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>2$</span>
+                        <span>5% frais</span>
+                    </div>
+                </div>
+            </div>
+            <div class="max-w-2xl mx-auto">
+                <h2 class="text-2xl font-semibold mb-6">Description</h2>
+                <p class="text-lg mb-6">La carte Standard est idéale pour les débutants. Avec un coût d'entrée bas de 2$, elle offre des paiements sécurisés en ligne avec des frais de transaction de 5%.</p>
+                <h2 class="text-2xl font-semibold mb-6">Avantages</h2>
+                <ul class="text-left list-disc list-inside mb-6">
+                    <li>Création rapide</li>
+                    <li>Paiements sécurisés</li>
+                    <li>Support basique</li>
+                </ul>
+                <h2 class="text-2xl font-semibold mb-6">Frais</h2>
+                <p class="text-lg mb-6">Coût initial: 2$<br>Frais de transaction: 5%</p>
+                <a href="contact.html" class="bg-primary hover:bg-blue-700 text-white px-8 py-4 rounded-lg transition text-lg">Obtenir cette carte</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-8 text-center">
+        <p>&copy; 2026 VITCH. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À propos - VITCH</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#667eea',
+                        secondary: '#764ba2',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Navbar -->
+    <nav class="bg-gray-800 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-primary">VITCH</a>
+            <ul class="flex space-x-6">
+                <li><a href="index.html" class="hover:text-primary transition">Accueil</a></li>
+                <li><a href="services.html" class="hover:text-primary transition">Services</a></li>
+                <li><a href="about.html" class="hover:text-primary transition">À propos</a></li>
+                <li><a href="contact.html" class="hover:text-primary transition">Contact</a></li>
+                <li><a href="dashboard.html" class="hover:text-primary transition">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <section class="py-20 bg-gray-800">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl font-bold mb-8">À propos de VITCH</h1>
+            <div class="max-w-4xl mx-auto">
+                <p class="text-lg mb-6">
+                    VITCH a été fondée le 13 avril 2026 par une équipe passionnée de développeurs engagés à révolutionner les paiements numériques en Afrique.
+                </p>
+                <p class="text-lg mb-6">
+                    Dirigée par notre PDG visionnaire, Melkisédeck DJIMADJO, nous avons réuni une équipe de développeurs talentueux et d'experts fintech qui partagent un objectif commun : combler le fossé entre la banque traditionnelle et les besoins numériques modernes.
+                </p>
+                <p class="text-lg">
+                    Notre mission est de simplifier les paiements numériques en Afrique, en offrant des solutions sécurisées, rapides et accessibles à tous.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-8 text-center">
+        <p>&copy; 2026 VITCH. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
